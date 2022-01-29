@@ -10,10 +10,8 @@ def ner(string, lang):
 
     out_list = []
     for token in parsed:
-
         text = token.text
-        # Not sure what you mean by type, so including a few possiblities
-        word_type = token.ent_type_, token.dep_, token.head.pos_
+        word_type = token.ent_type_
         start_pos = token.idx
         end_pos = start_pos + len(text)
 
@@ -24,8 +22,14 @@ def ner(string, lang):
 
         out_list.append(out_dict)
 
-    print(out_list)
     return(out_list)
 
 
 ner('I have $5 today', 'en')
+'''
+[{'text': 'I', 'type': '', 'start_pos': 0, 'end_pos': 1}, 
+{'text': 'have', 'type': '', 'start_pos': 2, 'end_pos': 6}, 
+{'text': '$', 'type': '', 'start_pos': 7, 'end_pos': 8}, 
+{'text': '5', 'type': 'MONEY', 'start_pos': 8, 'end_pos': 9}, 
+{'text': 'today', 'type': 'DATE', 'start_pos': 10, 'end_pos': 15}]
+'''
